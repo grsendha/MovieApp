@@ -5,9 +5,13 @@ import axios from "../utils/axios";
 import Header from "./templates/Header";
 import Spinner from "./Spinner";
 import HorizontalCard from "./templates/HorizontalCard";
+import Dropdown from "./templates/Dropdown";
+import MainScreen from "./templates/MainScreen";
+import { Outlet } from "react-router-dom";
 const Home = () => {
   const [wallpaper, setwallpaper] = useState(null);
   const [trending, settrending] = useState(null);
+  const [category, setCategory] = useState("all");
 
   const getHeaderWallpaper = async () => {
     try {
@@ -23,7 +27,7 @@ const Home = () => {
 
   const getTrending = async () => {
     try {
-      const { data } = await axios.get(`/trending/all/day`);
+      const { data } = await axios.get(`/trending/${category}/day`);
       settrending(data.results);
     } catch (error) {
       console.log(error);
@@ -34,17 +38,19 @@ const Home = () => {
 
   useEffect(() => {
     !wallpaper && getHeaderWallpaper();
-    !trending && getTrending();
-  }, []);
+    getTrending();
+  }, [category]);
 
   return wallpaper && trending ? (
     <>
       <Sidenav />
-      <div className="w-[80%] h-full bg-black overflow-auto overflow-x-hidden">
-        <Topnav />
-        <Header data={wallpaper} />
-        <HorizontalCard data={trending} />
-      </div>
+      {/* <Outlet /> */}
+      <MainScreen
+        wallpaper={wallpaper}
+        trending={trending}
+        category={category}
+        setCategory={setCategory}
+      />
     </>
   ) : (
     <Spinner />

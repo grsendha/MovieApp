@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = ({ data }) => {
+  const data1 = useSelector((state) => state.movie.info);
+  console.log("DATA1", data1);
   return (
     <div
       style={{
@@ -25,7 +28,10 @@ const Header = ({ data }) => {
         <i className="text-yellow-500 ri-vidicon-fill"></i>{" "}
         {data?.release_date || "No Information"}
       </p>
-      <Link className="bg-[#6556CD] p-3 rounded-md mt-5 text-white font-semibold">
+      <Link
+        to={`/${data.media_type}/${data.id}/trailer`}
+        className="bg-[#6556CD] p-3 rounded-md mt-5 text-white font-semibold"
+      >
         Watch Trailer
       </Link>
     </div>
