@@ -47,19 +47,21 @@ const Trending = () => {
   }, [category, duration]);
 
   return trending.length > 0 ? (
-    <div className="p-[3%] w-screen h-screen  overflow-y-auto">
-      <div className="w-full flex items-center justify-between">
-        <h1 className="w-[20%] text-2xl font-semibold text-zinc-400">
-          <i
-            onClick={() => navigate(-1)}
-            className="text-white ri-arrow-left-line"
-          ></i>{" "}
-          Trending
-        </h1>
-        <div className="flex items-center w-[80%]">
-          <Topnav />
-          <Dropdown />
-          <Dropdown />
+    <div className="p-[3%] w-full h-full  overflow-y-auto">
+      <div className="text-white flex justify-between items-center mx-[8%] my-4">
+        <h1 className="text text-4xl font-semibold">Trending</h1>
+        <div className=" ">
+          <Dropdown
+            dropData={["all", "movie", "tv"]}
+            func={setCategory}
+            title="Category"
+          />
+
+          <Dropdown
+            dropData={["day", "week"]}
+            func={setDuration}
+            title="Duration"
+          />
         </div>
       </div>
       <InfiniteScroll

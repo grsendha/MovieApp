@@ -4,7 +4,7 @@ import Progress from "./Progress";
 
 const Normalcard = ({ data, title }) => {
   return (
-    <div className="w-[100%] flex flex-wrap justify-center items-center gap-8">
+    <div className="w-full flex flex-wrap justify-center items-center gap-10">
       {data.map((item, index) => (
         <Link
           to={`/${item.media_type || title}/${item.id}`}
@@ -16,7 +16,7 @@ const Normalcard = ({ data, title }) => {
             boxShadow: "0 4px 8px rgba(255, 255, 255, 0.4)", // Modified box shadow with white color
           }}
           key={item.id}
-          className="min-w-[25vh] h-[39vh] bg-red-100 mr-5 mb-1 rounded-lg shadow-lg flex justify-center items-end p-5 relative"
+          className="min-w-[25vh] h-[39vh] bg-red-100  mb-1 rounded-lg shadow-lg flex justify-center items-end  relative"
         >
           <Progress />
         </Link>

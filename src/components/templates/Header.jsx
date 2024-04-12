@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = ({ data }) => {
-  const data1 = useSelector((state) => state.movie.info);
-  console.log("DATA1", data1);
+  // console.log("DATA", random);
   return (
     <div
       style={{

@@ -8,49 +8,15 @@ import HorizontalCard from "./templates/HorizontalCard";
 import Dropdown from "./templates/Dropdown";
 import MainScreen from "./templates/MainScreen";
 import { Outlet } from "react-router-dom";
+import { useSelector } from "react-redux";
 const Home = () => {
-  const [wallpaper, setwallpaper] = useState(null);
-  const [trending, settrending] = useState(null);
-  const [category, setCategory] = useState("all");
+  const retrivedData = useSelector((state) => state.movie.mainPageInfo);
 
-  const getHeaderWallpaper = async () => {
-    try {
-      const { data } = await axios.get(`/trending/all/day`);
-
-      let random =
-        data.results[(Math.random() * data.results.length).toFixed(0)];
-      setwallpaper(random);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const getTrending = async () => {
-    try {
-      const { data } = await axios.get(`/trending/${category}/day`);
-      settrending(data.results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  console.log("TRENDING", trending);
-  console.log("WALLPAPER", wallpaper);
-
-  useEffect(() => {
-    !wallpaper && getHeaderWallpaper();
-    getTrending();
-  }, [category]);
-
-  return wallpaper && trending ? (
+  return retrivedData ? (
     <>
       <Sidenav />
       {/* <Outlet /> */}
-      <MainScreen
-        wallpaper={wallpaper}
-        trending={trending}
-        category={category}
-        setCategory={setCategory}
-      />
+      <MainScreen />
     </>
   ) : (
     <Spinner />

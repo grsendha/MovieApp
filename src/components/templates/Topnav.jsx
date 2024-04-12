@@ -26,7 +26,7 @@ const Topnav = () => {
       <i className="text-3xl text-zinc-200 ri-search-2-line mr-4"></i>
       <input
         type="text"
-        className="w-[50%] h-[50%] bg-zinc-200 rounded-lg p-5 pl-10 mx-5"
+        className="w-[50%] h-[50%] bg-zinc-200 rounded-lg p-3 pl-10 text-zinc-800 font-semibold focus:outline-none focus:ring-2 focus:ring-zinc-300 duration-300"
         placeholder="Search for movies, tv shows, people..."
         onChange={(e) => setQuery(e.target.value)}
         value={query}

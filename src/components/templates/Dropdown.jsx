@@ -6,7 +6,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Dropdown({ func }) {
+export default function Dropdown({ dropData, func }) {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
@@ -30,7 +30,23 @@ export default function Dropdown({ func }) {
       >
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
-            <Menu.Item>
+            {dropData.map((item) => (
+              <Menu.Item>
+                {({ active }) => (
+                  <a
+                    onClick={(e) => func(e.target.innerText)}
+                    href="#"
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "block px-4 py-2 text-sm"
+                    )}
+                  >
+                    {item}
+                  </a>
+                )}
+              </Menu.Item>
+            ))}
+            {/* <Menu.Item>
               {({ active }) => (
                 <a
                   onClick={(e) => func("all")}
@@ -71,7 +87,7 @@ export default function Dropdown({ func }) {
                   Movie
                 </a>
               )}
-            </Menu.Item>
+            </Menu.Item> */}
           </div>
         </Menu.Items>
       </Transition>

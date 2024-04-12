@@ -11,11 +11,13 @@ const App = () => {
   return (
     <div className="w-screen h-screen flex">
       <Routes>
-        <Route path="/trending" element={<Trending />} />
+        {/* <Route path="/trending" element={<Trending />} /> */}
         <Route path="/" element={<Home />}>
-          <Route path="/hell" element={<LowerScreen />} />
+          <Route path="/" element={<LowerScreen />} />
+          <Route path="/trending" element={<Trending />} />
+          <Route path="/popular" element={<Popular />} />
         </Route>
-        <Route path="/popular" element={<Popular />} />
+        {/* <Route path="/popular" element={<Popular />} /> */}
         <Route path="/tv/:id" element={<TvDetail />} />
         <Route path="/movie/:id" element={<MovieDetail />}>
           <Route path="/movie/:id/trailer" element={<Trailer />} />

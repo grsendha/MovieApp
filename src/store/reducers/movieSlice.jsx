@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   info: null,
+  mainPageInfo: [],
 };
 export const movieSlice = createSlice({
   name: "movie",
@@ -13,10 +14,13 @@ export const movieSlice = createSlice({
     removeMovie: (state) => {
       state.info = null;
     },
+    loadMainPage: (state, action) => {
+      state.mainPageInfo = action.payload;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { loadMovie, removeMovie } = movieSlice.actions;
+export const { loadMovie, removeMovie, loadMainPage } = movieSlice.actions;
 
 export default movieSlice.reducer;

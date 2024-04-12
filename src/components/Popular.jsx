@@ -45,20 +45,11 @@ const Popular = () => {
   }, [category]);
 
   return popular.length > 0 ? (
-    <div className="p-[3%] w-screen h-screen  overflow-y-auto">
-      <div className="w-full flex items-center justify-between">
-        <h1 className="w-[20%] text-2xl font-semibold text-zinc-400">
-          <i
-            onClick={() => navigate(-1)}
-            className="text-white ri-arrow-left-line"
-          ></i>{" "}
-          Popular
-        </h1>
-        <div className="flex items-center w-[80%]">
-          <Topnav />
-          <Dropdown />
-        </div>
-      </div>
+    <div className="p-[3%] w-full h-full  overflow-y-auto">
+      <h1 className=" ml-[8%] mb-6 w-full text-4xl font-semibold text-white ">
+        Popular
+      </h1>
+
       <InfiniteScroll
         next={getPopular}
         dataLength={popular.length}

@@ -1,11 +1,17 @@
 export { removeMovie } from "../reducers/movieSlice";
 import axios from "../../utils/axios";
-import { loadMovie } from "../reducers/movieSlice";
+import { loadMainPage, loadMovie } from "../reducers/movieSlice";
 
-export const asyncWallpaper = () => async (dispatch, getState) => {
+export const asyncWallpaper = (category) => async (dispatch, getState) => {
   try {
     const wallpaper = await axios.get(`/trending/all/day`);
-    dispatch(loadMovie(wallpaper.data.results));
+    const trending = await axios.get(`/trending/${category}/day`);
+    dispatch(
+      loadMainPage({
+        wallpaper: wallpaper.data.results,
+        trending: trending.data.results,
+      })
+    );
   } catch (error) {
     console.error(error);
   }
