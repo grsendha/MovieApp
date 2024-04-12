@@ -13,9 +13,21 @@ const Header = ({ data }) => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         color: "white",
+        position: "relative",
       }}
-      className="w-full h-[50vh] flex flex-col justify-end items-start p-[5%] ali  "
+      className="w-full h-[50vh] flex flex-col justify-end items-start p-[5%] ali"
     >
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          height: "30%",
+          background:
+            "linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%)",
+        }}
+      ></div>
       <h1 className="w-[70%] text-4xl font-bold mb-3 font-mono">
         {data?.title ||
           data?.name ||

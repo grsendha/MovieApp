@@ -41,7 +41,9 @@ const LowerScreen = () => {
           </h1>
           <Dropdown dropData={["all", "tv", "movie"]} func={setCategory} />
         </div>
-        <HorizontalCard data={trendingData} />
+        <div className="mx-4">
+          <HorizontalCard data={trendingData} />
+        </div>
       </>
     )
   );
