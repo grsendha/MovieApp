@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import logoFM from "../../../public/logoFM.png";
 
 const Sidenav = () => {
   return (
@@ -7,10 +8,9 @@ const Sidenav = () => {
       className="w-[20%] bg-black h-full border-r-2
    border-sinc-200 p-10"
     >
-      <h1 className="text-2xl text-white font-bold">
-        <i className="text-[#6556CD] ri-tv-fill"></i>
-        <span className="text-2xl m-2">SCSDB</span>
-      </h1>
+      <Link to="/" className="flex items-center gap-2">
+        <img src={logoFM} alt="" />
+      </Link>
       <nav className="flex flex-col text-zinc-500 gap-2">
         <h1 className="text-white font-semibold text-xl mt-10 mb-5">
           New Feeds
